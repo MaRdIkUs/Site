@@ -1,0 +1,33 @@
+﻿<div class="container mt-2">
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <h1 class="col-lg-8" style="text-align:center;">@Model.Title</h1>
+        <div class="col-lg-2 mt-1">
+            <a class="btn btn-outline-secondary" style="float:right;" href="~/DefaultPages/DefaultTitlePage?pageId=@Model.Id">Назад</a>
+        </div>
+    </div>
+</div>
+<div class="row mt-5 mb-2">
+    @foreach (var mypage in Model.Pages)
+    {
+        <div class="col-lg-4">
+            <h2 style="text-align:center;">@mypage.Title</h2>
+            <div class="form-control" width="100%" style="word-wrap:break-word;height:50%;">
+                <p>@mypage.shortDescrition</p>
+            </div>
+            <form asp-controller="Edit" asp-action="EditTitlePage" method="post" asp-route-pageId="@mypage.Id" asp-route-command="delete" type="submit">
+                <div class="input-group mt-3">
+                    <div class="input-group-prepend">
+                        <a class="btn btn-secondary" href="~/DefaultPages/DefaultDescPage?pageId=@mypage.Id">Подробнее</a>
+                    </div>
+                    <div class="input-group-append">
+                        <button class="btn btn-danger" type="submit">Удалить</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    }
+    <div class="col-lg-4 mt-5">
+        <a class="btn btn-warning mt-3" href="~/Edit/EditDescPage?editPage=@(Model.Id*(-1)-1)">Добавить</a>
+    </div>
+</div>  

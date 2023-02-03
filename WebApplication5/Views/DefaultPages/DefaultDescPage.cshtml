@@ -1,0 +1,12 @@
+﻿<div class="row" style="word-wrap:break-word;">
+    <div class="col-lg-2"></div>
+    <h1 class="display-4 col-lg-8 text-center">@Model.page.Title</h1>
+    @if (Model.access)
+    {
+        <div class="col-lg-2">
+            <a class="btn btn-warning" style="float:left;" href="~/Edit/EditDescPage?editPage=@Model.page.Id">Изменить</a>
+        </div>
+    }
+
+</div>
+<p style="word-wrap:break-word;">@Model.page.Content</p>

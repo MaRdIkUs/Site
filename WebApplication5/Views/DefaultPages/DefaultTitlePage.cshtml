@@ -1,0 +1,28 @@
+﻿<div class="container mt-2">
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <h1 class="col-lg-8" style="text-align:center;">@Model.Title</h1>
+        @{
+            if (Model.access)
+            {
+                <div class="col-lg-2 mt-1">
+                    <a class="btn btn-outline-warning" style="float:right;" href="~/Edit/EditTitlePage?editPage=@Model.Id">Изменить</a>
+                </div>
+            }
+        }
+    </div>
+</div>
+<div class="row mt-5 mb-2">
+    @{
+        foreach (var mypage in Model.Pages)
+        {
+            <div class="col-lg-4">
+                <h2 style="text-align:center">@mypage.Title</h2>
+                <div class="form-control" width="100%" style="word-wrap:break-word;height:50%;">
+                    <p>@mypage.shortDescrition</p>
+                </div>
+                <a class="btn btn-warning mt-3" href="~/DefaultPages/DefaultDescPage?pageId=@mypage.Id">Подробнее</a>
+            </div>
+        }
+    }
+</div>

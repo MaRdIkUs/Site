@@ -1,0 +1,12 @@
+﻿<form asp-controller="Edit" asp-action="EditDescPage" asp-route-returnurl="@ViewBag.ReturnUrl" asp-route-id="@Model.Id" asp-route-pageType="@Model.PageType" method="post" class="form-horizontal">
+    <div class="form-group mt-5">
+        <label class="control-label" style="text-align:center;width:100%;"><h2>Заголовок</h2></label>
+        <input class="form-control" type="text" name="title" value="@Model.Title" />
+    </div>
+
+    <div class="form-group mt-5">
+        <label for="exampleFormControlTextarea1" class="control-label" style="text-align:center;width:100%;"><h2>Содержание</h2></label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" name="content">@Model.Content</textarea>
+    </div>
+    <button type="submit" class="btn btn-outline-secondary mt-5">Сохранить</button>
+</form>

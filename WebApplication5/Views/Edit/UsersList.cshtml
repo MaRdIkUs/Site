@@ -1,0 +1,38 @@
+﻿<input class="form-control mt-5" type="text" id="inputSearch" placeholder="Поиск...">
+<div class="container mt-5" id="searchContainer">
+    <a class="list-group-item">
+        <div class="row">
+            <div class="col">Имя пользователя</div>
+            <div class="col">Пароль</div>
+            <div class="col">Уровнь доступа</div>
+        </div>
+    </a>
+    @foreach (var user in Model.UsersData)
+    {
+        <a href="~/Edit/EditUser?userLg=@user.Login" class="list-group-item-action list-group-item">
+            <div class="row">
+                <div class="col">@user.Login</div>
+                <div class="col">@user.Password</div>
+                <div class="col">@Model.Roles[user.AccessLevel]</div>
+            </div>
+        </a>
+    }
+
+</div>
+<a class="btn btn-secondary mt-5" href="~/Home/Index">Назад</a>
+<script>
+    document.addEventListener('keyup', function () {
+        let input = document.getElementById("inputSearch");
+        let filter = input.value.toUpperCase();
+        let container = document.getElementById("searchContainer");
+        let elementToHide = container.getElementsByTagName("a");
+        for (let i = 1; i < elementToHide.length; i++) {
+            let a = elementToHide[i].getElementsByTagName("div").item(1);
+            if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                elementToHide[i].style.display = "";
+            } else {
+                elementToHide[i].style.display = "none";
+            }
+        }
+    });
+</script>

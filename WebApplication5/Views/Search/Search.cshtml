@@ -1,0 +1,16 @@
+﻿<form class="mt-5" asp-controller="Search" asp-action="Search">
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="@Model.searchText" name="textToSearch" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+            <button class="btn btn-warning" type="submit">Поиск</button>
+        </div>
+    </div>
+</form>
+<div class="list-group mt-5">
+    @{
+        foreach (var mypage in Model.pages)
+        {
+            <a href="~/DefaultPages/DefaultDescPage?pageId=@mypage.Id" class="list-group-item list-group-item-action">@mypage.Title</a>
+        }
+    }
+</div>
